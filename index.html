@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLEV</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f2;
+    --gray: #999;
+    --track-h: 56px;
+    --radius: 12px;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 48px;
+    z-index: 100;
+    background: var(--white);
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+
+  .nav-links a.muted {
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 48px;
+  }
+
+  .loading-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: fadeIn 0.4s ease 0.3s forwards;
+  }
+
+  /* ── PROGRESS TRACK ── */
+  .track {
+    width: 420px;
+    height: var(--track-h);
+    border: 2.5px solid var(--black);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    opacity: 0;
+    animation: fadeIn 0.4s ease 0.5s forwards;
+  }
+
+  .fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    background: var(--black);
+    border-radius: calc(var(--radius) - 2px) 0 0 calc(var(--radius) - 2px);
+    width: 0%;
+    animation: load 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+  }
+
+  /* The chunky "grip" handle at the fill edge */
+  .grip {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -28px; /* starts off-screen left */
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 70%;
+    animation: gripMove 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+    z-index: 10;
+  }
+
+  .grip-bar {
+    width: 6px;
+    height: 100%;
+    background: var(--black);
+    border-radius: 3px;
+  }
+
+  /* second bar slightly shorter for visual interest */
+  .grip-bar:nth-child(2) { height: 75%; }
+
+  @keyframes load {
+    0%   { width: 0%; }
+    15%  { width: 8%; }
+    40%  { width: 38%; }
+    70%  { width: 62%; }
+    88%  { width: 72%; }
+    100% { width: 72%; }
+  }
+
+  @keyframes gripMove {
+    0%   { right: calc(100% - 0%  - 28px); }
+    15%  { right: calc(100% - 8%  - 28px); }
+    40%  { right: calc(100% - 38% - 28px); }
+    70%  { right: calc(100% - 62% - 28px); }
+    88%  { right: calc(100% - 72% - 28px); }
+    100% { right: calc(100% - 72% - 28px); }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ── DOTS (animated ellipsis) ── */
+  .dots span {
+    display: inline-block;
+    animation: blink 1.4s infinite;
+  }
+  .dots span:nth-child(2) { animation-delay: 0.2s; }
+  .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes blink {
+    0%, 80%, 100% { opacity: 1; }
+    40% { opacity: 0; }
+  }
+
+  /* ── ABOUT PAGE (hidden by default) ── */
+  .page { display: none; }
+  .page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 48px;
+    min-height: 100vh;
+  }
+
+  .about-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 48px;
+  }
+
+  .about-body {
+    max-width: 560px;
+    font-size: 0.82rem;
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+    color: #333;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--black);
+    margin: 32px 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 22px 24px; }
+    .hero, .page.active { padding-left: 24px; padding-right: 24px; }
+    .track { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo" onclick="showPage('home'); return false;">CLEV</a>
+  <ul class="nav-links">
+    <li><a href="#" id="nav-home" onclick="showPage('home'); return false;">HOME</a></li>
+    <li><a href="#" id="nav-about" class="muted" onclick="showPage('about'); return false;">ABOUT</a></li>
+  </ul>
+</nav>
+
+<!-- HOME PAGE -->
+<main class="page active" id="page-home">
+  <div class="hero">
+    <p class="loading-label">Loading<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div class="track">
+      <div class="fill"></div>
+      <div class="grip">
+        <div class="grip-bar"></div>
+        <div class="grip-bar"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ABOUT PAGE -->
+<section class="page" id="page-about">
+  <h1 class="about-title">CLEV</h1>
+</section>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('nav-home').className = name === 'home' ? '' : 'muted';
+    document.getElementById('nav-about').className = name === 'about' ? '' : 'muted';
+    // Re-trigger loading animation when returning home
+    if (name === 'home') {
+      const fill = document.querySelector('.fill');
+      const grip = document.querySelector('.grip');
+      fill.style.animation = 'none';
+      grip.style.animation = 'none';
+      void fill.offsetWidth;
+      fill.style.animation = '';
+      grip.style.animation = '';
+    }
+  }
+</script>
+</body>
+</html>
