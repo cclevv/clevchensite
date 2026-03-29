@@ -1,0 +1,16 @@
+{
+  "name": "לומדים מטבעות ישראליים",
+  "short_name": "מטבעות",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e1",
+  "theme_color": "#0c4a6e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
