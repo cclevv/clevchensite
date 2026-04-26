@@ -994,7 +994,7 @@
                 padding: 0 !important;
                 margin: 0 !important;
             }
-            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown {
+            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown, .month-header, .preview-toolbar {
                 display: none !important;
             }
             .day-cell.selected, .week-day-container.selected {
@@ -1139,20 +1139,20 @@
 <body>
     <div class="toolbar">
         <div class="view-tabs" id="viewTabs">
-            <button class="view-tab active" data-view="month" onclick="switchView('month')">📅 חודשי</button>
-            <button class="view-tab" data-view="week" onclick="switchView('week')">📋 שבועי</button>
-            <button class="view-tab" data-view="day" onclick="switchView('day')">📌 יומי</button>
+            <button class="view-tab active" data-view="month" onclick="switchView('month')">חודשי</button>
+            <button class="view-tab" data-view="week" onclick="switchView('week')">שבועי</button>
+            <button class="view-tab" data-view="day" onclick="switchView('day')">יומי</button>
         </div>
         <div class="export-dropdown">
-            <button onclick="toggleExportMenu()">📤 ייצוא <span class="collapse-arrow">&#9660;</span></button>
+            <button onclick="toggleExportMenu()">ייצוא <span class="collapse-arrow">&#9660;</span></button>
             <div class="export-menu" id="exportMenu">
-                <button onclick="previewPrint(); closeExportMenu()">👁️ תצוגה מקדימה</button>
-                <button onclick="printCalendar(); closeExportMenu()">🖨️ הדפסה</button>
-                <button onclick="downloadPNG(); closeExportMenu()">📸 הורדת PNG</button>
+                <button onclick="previewPrint(); closeExportMenu()">תצוגה מקדימה</button>
+                <button onclick="printCalendar(); closeExportMenu()">הדפסה</button>
+                <button onclick="downloadPNG(); closeExportMenu()">הורדת PNG</button>
             </div>
         </div>
-        <button onclick="saveJSON()">💾 שמירה</button>
-        <button onclick="loadJSON()">📂 טעינה</button>
+        <button onclick="saveJSON()">שמירה</button>
+        <button onclick="loadJSON()">טעינה</button>
     </div>
     <div class="month-navigation" id="monthNavigation">
         <button onclick="previousMonth()">◄ חודש קודם</button>
@@ -1684,13 +1684,14 @@
             const isLandscape = viewMode !== 'day';
             const calendarContent = document.getElementById('calendarGrid').innerHTML;
             const styles = document.querySelector('style').textContent;
+            const pageSize = isLandscape ? 'A4 landscape' : 'A4 portrait';
             previewWin.document.write(`<!DOCTYPE html>
 <html lang="he" dir="rtl"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>תצוגה מקדימה</title>
 <style>${styles}
 body { background: white !important; padding: 20px !important; }
-.toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input { display: none !important; }
+.toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .month-header { display: none !important; }
 .calendar-grid { max-width: 100% !important; }
 .preview-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #4a5568; color: white; padding: 10px 20px; display: flex; gap: 10px; align-items: center; z-index: 9999; justify-content: center; }
 .preview-toolbar button { padding: 8px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
@@ -1698,6 +1699,8 @@ body { background: white !important; padding: 20px !important; }
 .preview-close-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3) !important; }
 body { padding-top: 60px !important; }
 ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; }'}
+@page { size: ${pageSize}; margin: 0.8cm; }
+@media print { .preview-toolbar { display: none !important; } }
 </style></head><body>
 <div class="preview-toolbar">
 <button class="preview-print-btn" onclick="window.print()">🖨️ הדפסה</button>
@@ -1739,6 +1742,8 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             monthNav.style.display = 'none';
             dayNav.style.display = 'none';
             deleteButtons.forEach(btn => btn.style.display = 'none');
+            document.querySelectorAll('.month-header').forEach(h => h.style.display = 'none');
+            document.querySelectorAll('.unsaved-badge').forEach(b => b.style.display = 'none');
             document.querySelectorAll('.day-cell.selected, .week-day-container.selected').forEach(cell => {
                 cell.style.borderColor = '#ddd';
                 cell.style.borderWidth = '2px';
@@ -1770,6 +1775,8 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
                 if (viewMode === 'day') dayNav.style.display = 'flex';
                 if (selectedDays.size > 0) badge.style.display = 'block';
                 deleteButtons.forEach(btn => btn.style.display = 'inline-block');
+                document.querySelectorAll('.month-header').forEach(h => h.style.display = '');
+                document.querySelectorAll('.unsaved-badge').forEach(b => { if (hasUnsavedChanges) b.style.display = 'block'; });
                 document.querySelectorAll('.day-cell.selected, .week-day-container.selected').forEach(cell => {
                     cell.style.borderColor = '#3182ce';
                     cell.style.borderWidth = '3px';
