@@ -129,9 +129,9 @@
             color: #4a5568;
         }
         .week-day-number {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             color: #333;
         }
         .week-day-emoji-top, .week-day-emoji-bottom {
@@ -145,7 +145,7 @@
             word-wrap: break-word;
         }
         .week-day-event {
-            font-size: 10px;
+            font-size: 12px;
             background: #fafbfc;
             padding: 5px 8px;
             margin: 5px 0;
@@ -288,8 +288,8 @@
             margin-top: 6px;
         }
         .week-day-photo {
-            width: 48px;
-            height: 48px;
+            width: 58px;
+            height: 58px;
             object-fit: cover;
             border-radius: 6px;
             cursor: pointer;
@@ -853,6 +853,31 @@
             color: #4299e1;
             font-size: 13px;
         }
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(4px);
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 20px;
+            border-radius: 12px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .site-footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-footer a:hover {
+            color: white;
+        }
         .print-title {
             display: none;
             text-align: center;
@@ -1113,7 +1138,7 @@
                 padding: 0 !important;
                 margin: 0 !important;
             }
-            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown, .month-header, .preview-toolbar, .daily-day-info, .daily-edit-btn {
+            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown, .month-header, .preview-toolbar, .daily-day-info, .daily-edit-btn, .site-footer {
                 display: none !important;
             }
             .print-title {
@@ -1266,7 +1291,7 @@
             <button class="view-tab" data-view="day" onclick="switchView('day')">יומי</button>
         </div>
         <div class="export-dropdown">
-            <button onclick="toggleExportMenu()">ייצוא <span class="collapse-arrow">&#9660;</span></button>
+            <button onclick="toggleExportMenu()">תפריט <span class="collapse-arrow">&#9660;</span></button>
             <div class="export-menu" id="exportMenu">
                 <button onclick="previewPrint(); closeExportMenu()">תצוגה מקדימה</button>
                 <button onclick="printCalendar(); closeExportMenu()">הדפסה</button>
@@ -1347,9 +1372,15 @@
         </div>
     </div>
     <input type="file" id="fileInput" style="display: none;" accept=".json">
+    <footer class="site-footer">
+        <span>© 2026</span>
+        <a href="https://www.clevchen.com" target="_blank">Clev</a>
+        <span>|</span>
+        <span>All rights reserved</span>
+    </footer>
     <script>
         const EMOJIS = ['🎉','🎂','🎈','⭐','💝','📚','✏️','⚽','🎨','🎵','🌟','💪','🏆','🎯','❤️','😊','🌈','🦄','🐶','🐱','🌸','🌺','☀️','🌙','✈️','🏠','🏫','🛝','🕯️','🍞','🍷','👧','👦','👨‍👩‍👧‍👦'];
-        const TAGS = ['אבא','אמא','יום הולדת','חופש','רופא','ספורט','מסיבה','טיול','בית ספר','חג','משפחה','חברים','ארוע'];
+        const TAGS = ['אבא','אמא','יום הולדת','חופש','רופא','ספורט','מסיבה','טיול','חג','משפחה','חברים','ארוע'];
         const TAG_COLORS = {
             'אבא': '#5b8db8',
             'אמא': '#c2727a',
@@ -1359,7 +1390,6 @@
             'ספורט': '#6aaa7a',
             'מסיבה': '#d4874e',
             'טיול': '#5a9e96',
-            'בית ספר': '#5b8db8',
             'חג': '#c2727a',
             'משפחה': '#6aaa7a',
             'חברים': '#5a9e96',
