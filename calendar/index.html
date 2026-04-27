@@ -1803,6 +1803,15 @@
             }
         }
         function saveEdit() {
+            const pendingEvent = document.getElementById('eventInput').value.trim();
+            if (pendingEvent) {
+                editingDates.forEach(dateStr => {
+                    if (!dayData[dateStr]) dayData[dateStr] = { emojiTop: [], emojiBottom: [], events: [] };
+                    if (!dayData[dateStr].events) dayData[dateStr].events = [];
+                    dayData[dateStr].events.push(pendingEvent);
+                });
+                document.getElementById('eventInput').value = '';
+            }
             const emojiTopSelected = Array.from(document.querySelectorAll('#emojiTopGrid .emoji-btn.selected')).map(btn => btn.textContent);
             const emojiBottomSelected = Array.from(document.querySelectorAll('#emojiBottomGrid .emoji-btn.selected')).map(btn => btn.textContent);
             const tagsSelected = Array.from(document.querySelectorAll('#tagsGrid .emoji-btn.selected')).map(btn => btn.textContent);
