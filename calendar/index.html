@@ -121,31 +121,31 @@
         }
         .week-day-header {
             font-weight: bold;
-            font-size: 18px;
-            margin: -15px -15px 10px -15px;
-            padding: 12px;
+            font-size: 13px;
+            margin: -15px -15px 6px -15px;
+            padding: 8px;
             background: #f0f4f8;
             border-radius: 12px 12px 0 0;
             color: #4a5568;
         }
         .week-day-number {
-            font-size: 32px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             color: #333;
         }
         .week-day-emoji-top, .week-day-emoji-bottom {
-            font-size: 24px;
-            margin: 8px 0;
+            font-size: 14px;
+            margin: 3px 0;
         }
         .week-day-note {
-            font-size: 14px;
+            font-size: 11px;
             color: #666;
-            margin: 8px 0;
+            margin: 3px 0;
             word-wrap: break-word;
         }
         .week-day-event {
-            font-size: 13px;
+            font-size: 10px;
             background: #fafbfc;
             padding: 5px 8px;
             margin: 5px 0;
@@ -190,10 +190,9 @@
             border-radius: 10px;
             color: white;
         }
-        .month-header.winter { background: #5a8fb8; }
-        .month-header.spring { background: #6aaa7a; }
-        .month-header.summer { background: #d4874e; }
-        .month-header.fall { background: #c4875a; }
+        .month-header {
+            display: none;
+        }
         .days-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -279,8 +278,8 @@
             max-width: 100%;
         }
         .week-day-tag {
-            font-size: 12px;
-            padding: 4px 10px;
+            font-size: 9px;
+            padding: 2px 6px;
         }
         .week-day-photos {
             display: flex;
@@ -314,8 +313,8 @@
         }
         .time-slots-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            grid-template-columns: 1fr;
+            gap: 8px;
         }
         .time-slot-box {
             border: 1px solid #e2e8f0;
@@ -488,14 +487,18 @@
             color: #999;
         }
         .delete-btn {
-            background: #f44336;
-            color: white;
+            background: #fed7d7;
+            color: #c53030;
             border: none;
-            border-radius: 3px;
-            padding: 2px 5px;
+            border-radius: 4px;
+            padding: 2px 6px;
             cursor: pointer;
             font-size: 10px;
             margin-right: 3px;
+            transition: background 0.2s;
+        }
+        .delete-btn:hover {
+            background: #feb2b2;
         }
         .modal {
             display: none;
@@ -510,28 +513,30 @@
         }
         .modal-content {
             background-color: white;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
+            margin: 30px auto;
+            padding: 24px;
+            border-radius: 14px;
             width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
+            max-width: 520px;
+            max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
         }
         .modal-header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
             text-align: center;
+            color: #2d3748;
         }
         .modal-section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .modal-section-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #4a5568;
         }
         .emoji-grid {
             display: grid;
@@ -540,7 +545,16 @@
             margin-bottom: 10px;
         }
         #tagsGrid {
-            grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        #tagsGrid .emoji-btn {
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            min-height: 0;
+            border: none;
         }
         .emoji-btn {
             font-size: 24px;
@@ -600,30 +614,35 @@
         }
         input[type="text"], textarea {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
         }
         textarea {
             resize: vertical;
-            min-height: 60px;
+            min-height: 50px;
         }
         .modal-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
-            margin-top: 20px;
+            margin-bottom: 16px;
         }
         .modal-buttons button {
-            padding: 12px 30px;
+            padding: 10px 24px;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.2s;
         }
         .save-btn {
             background: #4a5568;
@@ -647,6 +666,12 @@
         }
         .cancel-btn:hover {
             background: #f7fafc;
+        }
+        .mobile-only-btn {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .mobile-only-btn { display: block !important; }
         }
         .export-dropdown {
             position: relative;
@@ -744,6 +769,70 @@
         .collapsible.open .collapse-arrow {
             transform: rotate(180deg);
         }
+        .day-cell.today .day-number {
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .week-day-container.today {
+            border-color: #667eea !important;
+            border-width: 2px !important;
+        }
+        .week-day-empty-hint {
+            color: #cbd5e0;
+            font-size: 11px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .week-day-event.slot-event {
+            background: #f0eef8 !important;
+            border-right-color: #8b7bb8 !important;
+        }
+        .modal-photos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .modal-photo-thumb {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .modal-photo-container {
+            position: relative;
+            display: inline-block;
+        }
+        .modal-photo-container .delete-btn {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+        .weekly-tasks-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+        .weekly-tasks-toggle .collapse-arrow {
+            font-size: 12px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .weekly-tasks.collapsed #weeklyTasksList,
+        .weekly-tasks.collapsed .weekly-task-input {
+            display: none;
+        }
+        .weekly-tasks.collapsed .collapse-arrow {
+            transform: rotate(180deg);
+        }
         .day-more-indicator {
             font-size: 10px;
             color: #4299e1;
@@ -764,6 +853,14 @@
             color: #4299e1;
             font-size: 13px;
         }
+        .print-title {
+            display: none;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            padding: 8px 0;
+        }
         .unsaved-badge {
             position: fixed;
             bottom: 15px;
@@ -783,15 +880,18 @@
                 padding: 8px;
             }
             .toolbar {
-                padding: 8px;
-                gap: 6px;
+                padding: 6px;
+                gap: 4px;
                 justify-content: center;
             }
             .toolbar button {
-                padding: 8px 12px;
-                font-size: 13px;
-                flex: 1 1 auto;
+                padding: 6px 10px;
+                font-size: 12px;
+                flex: 0 1 auto;
                 min-width: 0;
+            }
+            .toolbar > button.data-btn {
+                display: none;
             }
             .week-navigation, .month-navigation {
                 padding: 10px;
@@ -824,7 +924,7 @@
                 font-size: 12px;
             }
             .day-cell {
-                min-height: 45px;
+                min-height: 52px;
                 padding: 3px;
             }
             .day-number {
@@ -885,18 +985,18 @@
                 padding: 10px;
             }
             .modal-content {
-                margin: 10px auto;
-                padding: 15px;
+                margin: 8px auto;
+                padding: 16px;
                 width: 95%;
-                max-height: 90vh;
-                border-radius: 8px;
+                max-height: 92vh;
+                border-radius: 12px;
             }
             .modal-header {
-                font-size: 18px;
-                margin-bottom: 12px;
+                font-size: 16px;
+                margin-bottom: 10px;
             }
             .modal-section-title {
-                font-size: 15px;
+                font-size: 13px;
             }
             .emoji-grid {
                 grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
@@ -905,6 +1005,10 @@
             .emoji-btn {
                 font-size: 20px;
                 padding: 6px;
+            }
+            #tagsGrid .emoji-btn {
+                font-size: 12px;
+                padding: 5px 10px;
             }
             .color-grid {
                 grid-template-columns: repeat(6, 1fr);
@@ -943,8 +1047,7 @@
                 margin: 5px 0 12px;
             }
             .time-slots-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
+                gap: 6px;
             }
             .time-slot-box {
                 min-height: 100px;
@@ -1010,8 +1113,14 @@
                 padding: 0 !important;
                 margin: 0 !important;
             }
-            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown, .month-header, .preview-toolbar {
+            .toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .export-dropdown, .month-header, .preview-toolbar, .daily-day-info, .daily-edit-btn {
                 display: none !important;
+            }
+            .print-title {
+                display: block !important;
+                font-size: 18px !important;
+                padding: 4px 0 !important;
+                margin-bottom: 4px !important;
             }
             .day-cell.selected, .week-day-container.selected {
                 border-color: #ddd;
@@ -1029,15 +1138,11 @@
                 page-break-inside: avoid;
             }
             .month-container {
-                width: 100% !important;
-                height: auto !important;
-            }
-            .month-container {
                 display: flex !important;
                 flex-direction: column !important;
-                height: 100vh !important;
+                height: calc(100vh - 35px) !important;
+                overflow: hidden !important;
             }
-            .month-header + .days-grid,
             .days-grid {
                 flex: 1 !important;
                 gap: 2px !important;
@@ -1047,6 +1152,7 @@
                 min-height: 0 !important;
                 padding: 2px !important;
                 font-size: 10px !important;
+                overflow: hidden !important;
             }
             .day-cell.empty {
                 background: #fafafa !important;
@@ -1076,19 +1182,18 @@
                 print-color-adjust: exact;
             }
             .week-view {
-                display: flex !important;
-                flex-direction: column !important;
-                height: 100vh !important;
+                padding: 8px !important;
             }
             .week-grid {
                 grid-template-columns: repeat(7, 1fr) !important;
                 gap: 4px !important;
-                flex: 1 !important;
             }
             .week-day-container {
+                max-height: 30vh !important;
                 min-height: 0 !important;
                 padding: 6px !important;
                 border-width: 1px !important;
+                overflow: hidden !important;
             }
             .week-day-header {
                 padding: 4px !important;
@@ -1114,7 +1219,7 @@
             .daily-view {
                 display: flex !important;
                 flex-direction: column !important;
-                height: 100vh !important;
+                height: calc(100vh - 35px) !important;
             }
             .time-slots-grid {
                 grid-template-columns: 1fr !important;
@@ -1125,6 +1230,7 @@
             .time-slot-box {
                 min-height: 0 !important;
                 padding: 5px !important;
+                overflow: hidden !important;
             }
             .time-slot-header {
                 padding: 4px !important;
@@ -1165,10 +1271,12 @@
                 <button onclick="previewPrint(); closeExportMenu()">תצוגה מקדימה</button>
                 <button onclick="printCalendar(); closeExportMenu()">הדפסה</button>
                 <button onclick="downloadPNG(); closeExportMenu()">הורדת PNG</button>
+                <button class="mobile-only-btn" onclick="saveJSON(); closeExportMenu()">שמירה</button>
+                <button class="mobile-only-btn" onclick="loadJSON(); closeExportMenu()">טעינה</button>
             </div>
         </div>
-        <button onclick="saveJSON()">שמירה</button>
-        <button onclick="loadJSON()">טעינה</button>
+        <button class="data-btn" onclick="saveJSON()">שמירה</button>
+        <button class="data-btn" onclick="loadJSON()">טעינה</button>
     </div>
     <div class="month-navigation" id="monthNavigation">
         <button onclick="previousMonth()">◄ חודש קודם</button>
@@ -1190,6 +1298,7 @@
     </div>
     <div class="selection-badge" id="selectionBadge"></div>
     <div class="unsaved-badge" id="unsavedBadge">שינויים לא נשמרו</div>
+    <div class="print-title" id="printTitle"></div>
     <div class="calendar-grid" id="calendarGrid"></div>
     <div id="editModal" class="modal">
         <div class="modal-content">
@@ -1213,6 +1322,11 @@
                 <div class="modal-section-title">הערה</div>
                 <textarea id="noteInput" placeholder="הקלד הערה"></textarea>
             </div>
+            <div class="modal-section">
+                <div class="modal-section-title">תמונות</div>
+                <div id="modalPhotosList"></div>
+                <label class="time-slot-upload-btn" style="margin-top:8px">📷 הוסף תמונה<input type="file" accept="image/*" style="display:none" id="modalPhotoInput"></label>
+            </div>
             <div class="modal-section collapsible">
                 <div class="modal-section-title collapsible-toggle" onclick="this.parentElement.classList.toggle('open')">אימוג'י, צבע ועוד <span class="collapse-arrow">&#9660;</span></div>
                 <div class="collapsible-content">
@@ -1235,28 +1349,21 @@
     <input type="file" id="fileInput" style="display: none;" accept=".json">
     <script>
         const EMOJIS = ['🎉','🎂','🎈','⭐','💝','📚','✏️','⚽','🎨','🎵','🌟','💪','🏆','🎯','❤️','😊','🌈','🦄','🐶','🐱','🌸','🌺','☀️','🌙','✈️','🏠','🏫','🛝','🕯️','🍞','🍷','👧','👦','👨‍👩‍👧‍👦'];
-        const TAGS = ['אבא','אמא','יום הולדת','חופש','פגישה','רופא','ספורט','עבודה','מסיבה','טיול','בית ספר','חג','משפחה','חברים','קניות','רכב','בנק','ארוע','פגש עסקית','אירוח'];
+        const TAGS = ['אבא','אמא','יום הולדת','חופש','רופא','ספורט','מסיבה','טיול','בית ספר','חג','משפחה','חברים','ארוע'];
         const TAG_COLORS = {
             'אבא': '#5b8db8',
             'אמא': '#c2727a',
             'יום הולדת': '#d4874e',
             'חופש': '#5a9e96',
-            'פגישה': '#8b7bb8',
             'רופא': '#c97070',
             'ספורט': '#6aaa7a',
-            'עבודה': '#7a8a9e',
             'מסיבה': '#d4874e',
             'טיול': '#5a9e96',
             'בית ספר': '#5b8db8',
             'חג': '#c2727a',
             'משפחה': '#6aaa7a',
             'חברים': '#5a9e96',
-            'קניות': '#8b7bb8',
-            'רכב': '#7a8a9e',
-            'בנק': '#7a8a9e',
-            'ארוע': '#5b8db8',
-            'פגש עסקית': '#6b7280',
-            'אירוח': '#d4874e'
+            'ארוע': '#5b8db8'
         };
         const COLORS = ['#fce4e4','#d6ecf5','#daf0df','#f5edce','#f5d6e0','#e8d8f0','#f5dcc0','#d0ebe6','#f5e2cc','#e2f0d8','#f2f2f2','#ffffff'];
         const DAY_HEADERS = ['א\'', 'ב\'', 'ג\'', 'ד\'', 'ה\'', 'ו\'', 'ש\''];
@@ -1335,7 +1442,7 @@
             const seasonEmojis = SEASON_EMOJIS[season].join(' ');
             const monthHeader = document.createElement('div');
             monthHeader.className = `month-header ${season}`;
-            monthHeader.textContent = `${MONTHS[month]} ${year} ${seasonEmojis}`;
+            monthHeader.textContent = `${MONTHS[month]} ${year}`;
             monthContainer.appendChild(monthHeader);
             const daysGrid = document.createElement('div');
             daysGrid.className = 'days-grid';
@@ -1422,10 +1529,24 @@
                     itemCount++;
                 }
             });
+            const dayPhotos = data.photos || [];
+            if (dayPhotos.length > 0) totalItems += dayPhotos.length;
+            if (dayPhotos.length > 0 && itemCount < maxItems) {
+                html += '<div class="week-day-photos">';
+                dayPhotos.slice(0, 2).forEach(p => {
+                    html += `<img class="week-day-photo" src="${p}" style="width:24px;height:24px;" onclick="event.stopPropagation();viewPhoto(this.src)">`;
+                });
+                html += '</div>';
+                itemCount++;
+            }
             if (totalItems > maxItems) {
                 html += `<div class="day-more-indicator">+${totalItems - maxItems} עוד</div>`;
             }
             cell.innerHTML = html;
+            const today = new Date();
+            const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+            if (dateStr === todayStr) cell.classList.add('today');
+            else cell.classList.remove('today');
             if (selectedDays.has(dateStr)) {
                 cell.classList.add('selected');
             } else {
@@ -1490,7 +1611,9 @@
             const modal = document.getElementById('editModal');
             const header = document.getElementById('modalHeader');
             if (dates.length === 1) {
-                header.textContent = `עריכת יום ${dates[0]}`;
+                const d = new Date(dates[0]);
+                const dow = DAY_HEADERS[d.getDay()];
+                header.textContent = `${dow} ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
             } else {
                 header.textContent = `עריכת ${dates.length} ימים`;
             }
@@ -1503,6 +1626,7 @@
             createEmojiGrid('emojiBottomGrid', firstData.emojiBottom || []);
             document.getElementById('noteInput').value = firstData.note || '';
             createColorGrid(firstData.color || '#ffffff');
+            updateModalPhotos();
             modal.style.display = 'block';
         }
         function createEmojiGrid(gridId, selectedEmojis) {
@@ -1607,6 +1731,60 @@
                 updateEventsList();
             }
         }
+        function updateModalPhotos() {
+            const list = document.getElementById('modalPhotosList');
+            list.innerHTML = '';
+            if (editingDates.length === 1) {
+                const data = dayData[editingDates[0]] || {};
+                const photos = data.photos || [];
+                const grid = document.createElement('div');
+                grid.className = 'modal-photos-grid';
+                photos.forEach((photo, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'modal-photo-container';
+                    div.innerHTML = `<img class="modal-photo-thumb" src="${photo}" onclick="viewPhoto(this.src)"><button class="delete-btn" onclick="deleteModalPhoto(${idx})">×</button>`;
+                    grid.appendChild(div);
+                });
+                list.appendChild(grid);
+            }
+        }
+        function deleteModalPhoto(index) {
+            if (editingDates.length === 1 && dayData[editingDates[0]] && dayData[editingDates[0]].photos) {
+                dayData[editingDates[0]].photos.splice(index, 1);
+                updateModalPhotos();
+                markUnsaved();
+            }
+        }
+        document.getElementById('modalPhotoInput').addEventListener('change', function() {
+            const file = this.files[0];
+            if (!file || editingDates.length === 0) return;
+            const dateStr = editingDates[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const maxSize = 800;
+                    let w = img.width, h = img.height;
+                    if (w > maxSize || h > maxSize) {
+                        if (w > h) { h = h * maxSize / w; w = maxSize; }
+                        else { w = w * maxSize / h; h = maxSize; }
+                    }
+                    canvas.width = w;
+                    canvas.height = h;
+                    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                    const base64 = canvas.toDataURL('image/jpeg', 0.7);
+                    if (!dayData[dateStr]) dayData[dateStr] = { emojiTop: [], emojiBottom: [], events: [], tags: [] };
+                    if (!dayData[dateStr].photos) dayData[dateStr].photos = [];
+                    dayData[dateStr].photos.push(base64);
+                    updateModalPhotos();
+                    markUnsaved();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            this.value = '';
+        });
         function deleteEvent(e, dateStr, index) {
             e.stopPropagation();
             if (dayData[dateStr] && dayData[dateStr].events) {
@@ -1689,6 +1867,12 @@
             const b = parseInt(match[3]);
             return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
         }
+        function updatePrintTitle() {
+            const el = document.getElementById('printTitle');
+            if (viewMode === 'month') el.textContent = document.getElementById('monthTitle').textContent;
+            else if (viewMode === 'week') el.textContent = document.getElementById('weekTitle').textContent;
+            else el.textContent = document.getElementById('dayTitle').textContent;
+        }
         function toggleExportMenu() {
             document.getElementById('exportMenu').classList.toggle('open');
         }
@@ -1696,6 +1880,7 @@
             document.getElementById('exportMenu').classList.remove('open');
         }
         function previewPrint() {
+            updatePrintTitle();
             const previewWin = window.open('', '_blank');
             const isLandscape = viewMode !== 'day';
             const calendarContent = document.getElementById('calendarGrid').innerHTML;
@@ -1707,7 +1892,8 @@
 <title>תצוגה מקדימה</title>
 <style>${styles}
 body { background: white !important; padding: 20px !important; }
-.toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .month-header { display: none !important; }
+.toolbar, .selection-badge, .delete-btn, .week-navigation, .month-navigation, .day-navigation, .unsaved-badge, .empty-state-hint, .time-slot-input, .time-slot-upload-btn, .weekly-task-input, .month-header, .daily-day-info, .daily-edit-btn { display: none !important; }
+.print-title { display: block !important; text-align: center; font-size: 22px; font-weight: bold; color: #333; padding: 8px 0; }
 .calendar-grid { max-width: 100% !important; }
 .preview-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #4a5568; color: white; padding: 10px 20px; display: flex; gap: 10px; align-items: center; z-index: 9999; justify-content: center; }
 .preview-toolbar button { padding: 8px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
@@ -1716,17 +1902,19 @@ body { background: white !important; padding: 20px !important; }
 body { padding-top: 60px !important; }
 ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; }'}
 @page { size: ${pageSize}; margin: 0.8cm; }
-@media print { .preview-toolbar { display: none !important; } }
+@media print { .preview-toolbar { display: none !important; } body { padding-top: 0 !important; } }
 </style></head><body>
 <div class="preview-toolbar">
-<button class="preview-print-btn" onclick="window.print()">🖨️ הדפסה</button>
+<button class="preview-print-btn" onclick="window.print()">הדפסה</button>
 <button class="preview-close-btn" onclick="window.close()">✕ סגור</button>
 </div>
+<div class="print-title">${document.getElementById('printTitle').textContent}</div>
 <div class="calendar-grid">${calendarContent}</div>
 </body></html>`);
             previewWin.document.close();
         }
         function printCalendar() {
+            updatePrintTitle();
             const styleId = 'print-page-style';
             let styleEl = document.getElementById(styleId);
             if (styleEl) styleEl.remove();
@@ -1741,38 +1929,51 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             window.print();
         }
         function downloadPNG() {
-            const toolbar = document.querySelector('.toolbar');
-            const badge = document.getElementById('selectionBadge');
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            const weekNav = document.getElementById('weekNavigation');
-            const monthNav = document.getElementById('monthNavigation');
-            const dayNav = document.getElementById('dayNavigation');
-            const calendarGrid = document.getElementById('calendarGrid');
-            const weekView = document.querySelector('.week-view');
-            const body = document.body;
-            const originalBodyPadding = body.style.padding;
-            const originalBodyBackground = body.style.background;
-            toolbar.style.display = 'none';
-            badge.style.display = 'none';
-            weekNav.style.display = 'none';
-            monthNav.style.display = 'none';
-            dayNav.style.display = 'none';
-            deleteButtons.forEach(btn => btn.style.display = 'none');
-            document.querySelectorAll('.month-header').forEach(h => h.style.display = 'none');
-            document.querySelectorAll('.unsaved-badge').forEach(b => b.style.display = 'none');
-            document.querySelectorAll('.day-cell.selected, .week-day-container.selected').forEach(cell => {
-                cell.style.borderColor = '#ddd';
-                cell.style.borderWidth = '2px';
-                cell.style.boxShadow = 'none';
-            });
-            if (viewMode === 'week' && weekView) {
-                body.style.padding = '40px';
-                body.style.background = 'white';
-                calendarGrid.style.maxWidth = '100%';
-                weekView.style.margin = '0 auto';
-            }
-            const captureElement = viewMode === 'week' ? calendarGrid : document.body;
-            html2canvas(captureElement, {
+            updatePrintTitle();
+            const isLandscape = viewMode !== 'day';
+            const w = isLandscape ? 1122 : 794;
+            const h = isLandscape ? 794 : 1122;
+            const calendarContent = document.getElementById('calendarGrid').innerHTML;
+            const titleText = document.getElementById('printTitle').textContent;
+            const styles = document.querySelector('style').textContent;
+            const container = document.createElement('div');
+            container.style.cssText = `position:fixed;top:0;left:0;width:${w}px;height:${h}px;z-index:-9999;background:white;overflow:hidden;`;
+            container.innerHTML = `<style>${styles}
+body,.month-container,.week-view,.daily-view{background:white!important;box-shadow:none!important;border-radius:0!important;}
+.toolbar,.selection-badge,.delete-btn,.week-navigation,.month-navigation,.day-navigation,.unsaved-badge,.empty-state-hint,.time-slot-input,.time-slot-upload-btn,.weekly-task-input,.export-dropdown,.month-header,.preview-toolbar,.daily-day-info,.daily-edit-btn{display:none!important;}
+.print-title{display:block!important;text-align:center;font-size:18px;font-weight:bold;color:#333;padding:6px 0;}
+.calendar-grid{max-width:100%!important;display:block;}
+.month-container{display:flex!important;flex-direction:column!important;height:${h-40}px!important;padding:8px!important;}
+.days-grid{flex:1!important;gap:2px!important;grid-auto-rows:1fr!important;}
+.day-cell{min-height:0!important;padding:2px!important;font-size:10px!important;}
+.day-cell.empty{background:#fafafa!important;}
+.day-number{font-size:12px!important;}
+.day-tag{font-size:7px!important;padding:1px 4px!important;}
+.day-event{font-size:8px!important;padding:1px 2px!important;}
+.day-header{padding:4px!important;font-size:11px!important;}
+.week-view{display:flex!important;flex-direction:column!important;height:${h-40}px!important;padding:8px!important;}
+.week-grid{grid-template-columns:repeat(7,1fr)!important;gap:4px!important;}
+.week-day-container{min-height:0!important;padding:6px!important;border-width:1px!important;overflow:hidden!important;}
+.week-day-header{padding:4px!important;font-size:12px!important;margin:-6px -6px 4px -6px!important;}
+.week-day-number{font-size:20px!important;margin-bottom:4px!important;}
+.week-day-event{font-size:10px!important;padding:2px 4px!important;}
+.week-day-tag{font-size:8px!important;padding:1px 5px!important;}
+.weekly-tasks{margin-top:8px!important;padding:8px!important;}
+.daily-view{display:flex!important;flex-direction:column!important;height:${h-40}px!important;padding:8px!important;}
+.time-slots-grid{grid-template-columns:1fr!important;gap:4px!important;flex:1!important;grid-auto-rows:1fr!important;}
+.time-slot-box{min-height:0!important;padding:5px!important;}
+.time-slot-header{padding:4px!important;font-size:13px!important;margin:-5px -5px 4px -5px!important;}
+.time-slot-event{font-size:11px!important;}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+</style>
+<div dir="rtl" style="width:${w}px;height:${h}px;padding:12px;box-sizing:border-box;">
+<div class="print-title">${titleText}</div>
+<div class="calendar-grid">${calendarContent}</div>
+</div>`;
+            document.body.appendChild(container);
+            html2canvas(container, {
+                width: w,
+                height: h,
                 scale: 2,
                 logging: false,
                 useCORS: true,
@@ -1782,22 +1983,7 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
                 link.download = `calendar_${new Date().toISOString().split('T')[0]}.png`;
                 link.href = canvas.toDataURL();
                 link.click();
-                body.style.padding = originalBodyPadding;
-                body.style.background = originalBodyBackground;
-                calendarGrid.style.maxWidth = '1200px';
-                toolbar.style.display = 'flex';
-                if (viewMode === 'week') weekNav.style.display = 'flex';
-                if (viewMode === 'month') monthNav.style.display = 'flex';
-                if (viewMode === 'day') dayNav.style.display = 'flex';
-                if (selectedDays.size > 0) badge.style.display = 'block';
-                deleteButtons.forEach(btn => btn.style.display = 'inline-block');
-                document.querySelectorAll('.month-header').forEach(h => h.style.display = '');
-                document.querySelectorAll('.unsaved-badge').forEach(b => { if (hasUnsavedChanges) b.style.display = 'block'; });
-                document.querySelectorAll('.day-cell.selected, .week-day-container.selected').forEach(cell => {
-                    cell.style.borderColor = '#3182ce';
-                    cell.style.borderWidth = '3px';
-                    cell.style.boxShadow = '0 0 10px rgba(49, 130, 206, 0.5)';
-                });
+                document.body.removeChild(container);
             });
         }
         function saveJSON() {
@@ -1909,7 +2095,7 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             const seasonEmojis = SEASON_EMOJIS[season].join(' ');
             const weekHeader = document.createElement('div');
             weekHeader.className = `month-header ${season}`;
-            weekHeader.textContent = `${MONTHS[startDate.getMonth()]} ${startDate.getFullYear()} ${seasonEmojis}`;
+            weekHeader.textContent = `${MONTHS[startDate.getMonth()]} ${startDate.getFullYear()}`;
             weekView.appendChild(weekHeader);
             const weekGrid = document.createElement('div');
             weekGrid.className = 'week-grid';
@@ -1951,17 +2137,20 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
                 }
                 const slotEventsW = getTimeSlotEvents(dateStr);
                 slotEventsW.forEach(ev => {
-                    html += `<div class="week-day-event"><span>${ev}</span></div>`;
+                    html += `<div class="week-day-event slot-event"><span>${ev}</span></div>`;
                 });
-                const slotPhotosW = getTimeSlotPhotos(dateStr);
-                if (slotPhotosW.length > 0) {
+                const allPhotosW = [...getTimeSlotPhotos(dateStr), ...(data.photos || [])];
+                if (allPhotosW.length > 0) {
                     html += `<div class="week-day-photos">`;
-                    slotPhotosW.forEach(p => {
+                    allPhotosW.forEach(p => {
                         html += `<img class="week-day-photo" src="${p}" onclick="viewPhoto(this.src)">`;
                     });
                     html += `</div>`;
                 }
                 dayContainer.innerHTML = html;
+                const today = new Date();
+                const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+                if (dateStr === todayStr) dayContainer.classList.add('today');
                 if (selectedDays.has(dateStr)) {
                     dayContainer.classList.add('selected');
                 }
@@ -1973,7 +2162,7 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             const weeklyTasksSection = document.createElement('div');
             weeklyTasksSection.className = 'weekly-tasks';
             weeklyTasksSection.innerHTML = `
-                <div class="weekly-tasks-header">📋 משימות שבועיות</div>
+                <div class="weekly-tasks-header weekly-tasks-toggle" onclick="this.closest('.weekly-tasks').classList.toggle('collapsed')">📋 משימות שבועיות <span class="collapse-arrow">&#9660;</span></div>
                 <input type="text" class="weekly-task-input" id="weeklyTaskInput" placeholder="הוסף משימה ולחץ Enter">
                 <div id="weeklyTasksList"></div>
             `;
@@ -2064,12 +2253,12 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             }
             const slotEventsU = getTimeSlotEvents(dateStr);
             slotEventsU.forEach(ev => {
-                html += `<div class="week-day-event"><span>${ev}</span></div>`;
+                html += `<div class="week-day-event slot-event"><span>${ev}</span></div>`;
             });
-            const slotPhotosU = getTimeSlotPhotos(dateStr);
-            if (slotPhotosU.length > 0) {
+            const allPhotosU = [...getTimeSlotPhotos(dateStr), ...(data.photos || [])];
+            if (allPhotosU.length > 0) {
                 html += `<div class="week-day-photos">`;
-                slotPhotosU.forEach(p => {
+                allPhotosU.forEach(p => {
                     html += `<img class="week-day-photo" src="${p}" onclick="viewPhoto(this.src)">`;
                 });
                 html += `</div>`;
@@ -2092,37 +2281,24 @@ ${isLandscape ? '' : '.time-slots-grid { grid-template-columns: 1fr !important; 
             const seasonEmojis = SEASON_EMOJIS[season].join(' ');
             const dailyView = document.createElement('div');
             dailyView.className = 'daily-view';
-            const header = document.createElement('div');
-            header.className = `month-header ${season}`;
-            header.textContent = `${dayOfWeek} ${currentDay.getDate()} ${MONTHS[currentDay.getMonth()]} ${seasonEmojis}`;
-            dailyView.appendChild(header);
             const data = dayData[dateStr] || {};
-            if ((data.tags && data.tags.length > 0) || (data.emojiTop && data.emojiTop.length > 0) || (data.emojiBottom && data.emojiBottom.length > 0) || data.note) {
-                const infoDiv = document.createElement('div');
-                infoDiv.className = 'daily-day-info';
-                let infoHtml = '';
-                if (data.tags && data.tags.length > 0) {
-                    infoHtml += '<div class="day-tags">';
-                    data.tags.forEach(tag => {
-                        const bgColor = TAG_COLORS[tag] || '#7a8a9e';
-                        infoHtml += `<span class="day-tag" style="background: ${bgColor}; font-size:12px; padding:4px 10px;">${tag}</span>`;
-                    });
-                    infoHtml += '</div>';
-                }
-                if (data.emojiTop && data.emojiTop.length > 0) infoHtml += `<div style="font-size:24px;margin:5px 0">${data.emojiTop.join(' ')}</div>`;
-                if (data.emojiBottom && data.emojiBottom.length > 0) infoHtml += `<div style="font-size:24px;margin:5px 0">${data.emojiBottom.join(' ')}</div>`;
-                if (data.note) infoHtml += `<div style="color:#666;margin:5px 0">${data.note}</div>`;
-                infoDiv.innerHTML = infoHtml;
-                infoDiv.style.cursor = 'pointer';
-                infoDiv.onclick = () => openEditModal([dateStr]);
-                dailyView.appendChild(infoDiv);
-            } else {
-                const addBtn = document.createElement('div');
-                addBtn.style.cssText = 'text-align:center;margin:10px 0;cursor:pointer;color:#4299e1;font-size:14px;';
-                addBtn.textContent = '+ עריכת יום (תגיות, אימוג\'י, הערה)';
-                addBtn.onclick = () => openEditModal([dateStr]);
-                dailyView.appendChild(addBtn);
+            const infoStrip = document.createElement('div');
+            infoStrip.className = 'daily-day-info';
+            infoStrip.style.cssText = 'display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;margin-bottom:8px;cursor:pointer;min-height:36px;';
+            infoStrip.onclick = () => openEditModal([dateStr]);
+            let stripHtml = '';
+            if (data.tags && data.tags.length > 0) {
+                data.tags.forEach(tag => {
+                    const bgColor = TAG_COLORS[tag] || '#7a8a9e';
+                    stripHtml += `<span class="day-tag" style="background:${bgColor};font-size:11px;padding:3px 8px;">${tag}</span>`;
+                });
             }
+            if (data.emojiTop && data.emojiTop.length > 0) stripHtml += `<span style="font-size:18px">${data.emojiTop.join(' ')}</span>`;
+            if (data.emojiBottom && data.emojiBottom.length > 0) stripHtml += `<span style="font-size:18px">${data.emojiBottom.join(' ')}</span>`;
+            if (data.note) stripHtml += `<span style="color:#666;font-size:13px">${data.note}</span>`;
+            if (!stripHtml) stripHtml = '<span class="daily-edit-btn" style="color:#667eea;font-size:13px">+ עריכת יום</span>';
+            infoStrip.innerHTML = stripHtml;
+            dailyView.appendChild(infoStrip);
             if (!data.timeSlots) {
                 if (!dayData[dateStr]) dayData[dateStr] = { emojiTop: [], emojiBottom: [], events: [], tags: [] };
                 dayData[dateStr].timeSlots = {};
