@@ -31,18 +31,21 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(160deg, #faf6f1 0%, #f0ebe4 50%, #e8e0d8 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0 20px 50px 20px;
             direction: rtl;
         }
         .toolbar {
             background: white;
             padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 10px;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .toolbar button {
             padding: 12px 24px;
@@ -62,13 +65,16 @@
         }
         .week-navigation, .month-navigation {
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 99;
         }
         .week-navigation button, .month-navigation button {
             padding: 12px 24px;
@@ -145,8 +151,8 @@
             word-wrap: break-word;
         }
         .week-day-event {
-            font-size: 12px;
-            background: #fafbfc;
+            font-size: 18px;
+            background: rgba(250, 251, 252, 0.5);
             padding: 5px 8px;
             margin: 5px 0;
             border-radius: 4px;
@@ -249,8 +255,8 @@
             word-wrap: break-word;
         }
         .day-event {
-            font-size: 11px;
-            background: #fafbfc;
+            font-size: 14px;
+            background: rgba(250, 251, 252, 0.5);
             padding: 2px 6px;
             margin: 2px 0;
             border-radius: 3px;
@@ -344,8 +350,8 @@
         .time-slot-box[data-slot="evening"] .time-slot-header { background: #e8eef6; color: #3a5068; }
         .time-slot-box[data-slot="night"] .time-slot-header { background: #e8e4f0; color: #4a3a68; }
         .time-slot-event {
-            font-size: 13px;
-            background: #fafbfc;
+            font-size: 17px;
+            background: rgba(250, 251, 252, 0.5);
             padding: 5px 8px;
             margin: 5px 0;
             border-radius: 4px;
@@ -406,13 +412,16 @@
         }
         .day-navigation {
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 60px;
+            z-index: 99;
         }
         .day-navigation button {
             padding: 12px 24px;
@@ -790,7 +799,7 @@
             margin-top: 10px;
         }
         .week-day-event.slot-event {
-            background: #f0eef8 !important;
+            background: rgba(240, 238, 248, 0.5) !important;
             border-right-color: #8b7bb8 !important;
         }
         .modal-photos-grid {
@@ -854,20 +863,20 @@
             font-size: 13px;
         }
         .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            padding: 12px;
-            background: rgba(17, 24, 39, 0.8);
+            padding: 10px;
+            background: rgba(17, 24, 39, 0.85);
             backdrop-filter: blur(4px);
             color: #6b7280;
             font-size: 12px;
-            margin-top: 20px;
-            border-radius: 12px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            z-index: 999;
         }
         .site-footer a {
             color: #9ca3af;
@@ -974,29 +983,37 @@
                 border-radius: 8px;
             }
             .week-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 4px;
             }
             .week-day-container {
-                min-height: 120px;
-                padding: 10px;
-                border-radius: 8px;
+                min-height: 60px;
+                padding: 4px;
+                border-radius: 6px;
             }
             .week-day-header {
-                margin: -10px -10px 8px -10px;
-                padding: 8px;
-                font-size: 14px;
-                border-radius: 8px 8px 0 0;
+                margin: -4px -4px 4px -4px;
+                padding: 4px;
+                font-size: 10px;
+                border-radius: 6px 6px 0 0;
             }
             .week-day-number {
-                font-size: 24px;
+                font-size: 13px;
             }
             .week-day-emoji-top, .week-day-emoji-bottom {
-                font-size: 18px;
+                font-size: 11px;
             }
             .week-day-tag {
-                font-size: 10px;
-                padding: 2px 6px;
+                font-size: 7px;
+                padding: 1px 3px;
+            }
+            .week-day-event {
+                font-size: 8px;
+                padding: 1px 3px;
+            }
+            .week-day-photo {
+                width: 24px;
+                height: 24px;
             }
             .weekly-tasks {
                 padding: 12px;
@@ -1125,11 +1142,8 @@
         }
         @media (max-width: 400px) {
             .week-grid {
-                grid-template-columns: 1fr;
-                gap: 6px;
-            }
-            .week-day-container {
-                min-height: 80px;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 3px;
             }
         }
         @media print {
@@ -1335,13 +1349,17 @@
             </div>
             <div class="modal-section">
                 <div class="modal-section-title">הוספת אירוע</div>
-                <input type="text" id="eventInput" placeholder="הקלד אירוע ולחץ Enter">
+                <input type="text" id="eventInput" placeholder="הקלד אירוע">
                 <div id="eventsList" style="margin-top: 10px;"></div>
+            </div>
+            <div class="modal-section">
+                <div class="modal-section-title">צבע רקע</div>
+                <div class="color-grid" id="colorGrid"></div>
             </div>
             <div class="modal-section">
                 <div class="modal-section-title">תגיות (Tags)</div>
                 <div class="emoji-grid" id="tagsGrid"></div>
-                <input type="text" id="customTagInput" placeholder="הוסף תגית מותאמת אישית ולחץ Enter" style="margin-top: 10px;">
+                <input type="text" id="customTagInput" placeholder="הוסף תגית מותאמת אישית" style="margin-top: 10px;">
             </div>
             <div class="modal-section">
                 <div class="modal-section-title">הערה</div>
@@ -1362,10 +1380,6 @@
                     <div style="margin-bottom:15px">
                         <div class="modal-section-title" style="font-size:15px">אימוג'י תחתון</div>
                         <div class="emoji-grid" id="emojiBottomGrid"></div>
-                    </div>
-                    <div>
-                        <div class="modal-section-title" style="font-size:15px">צבע רקע</div>
-                        <div class="color-grid" id="colorGrid"></div>
                     </div>
                 </div>
             </div>
@@ -1869,7 +1883,7 @@
                 }
             });
             markUnsaved();
-            closeModal();
+            hideModal();
         }
         function clearEdit() {
             editingDates.forEach(dateStr => {
@@ -1888,14 +1902,18 @@
                     updateWeekDayCell(dateStr);
                 }
             });
-            closeModal();
+            hideModal();
         }
-        function closeModal() {
+        function hideModal() {
             document.getElementById('editModal').style.display = 'none';
             editingDates = [];
             if (viewMode === 'month') generateCalendar();
             else if (viewMode === 'week') generateWeekView();
             else generateDayView();
+        }
+        function closeModal() {
+            if (editingDates.length > 0) saveEdit();
+            else hideModal();
         }
         function rgbToHex(rgb) {
             if (rgb.startsWith('#')) return rgb;
@@ -2202,7 +2220,7 @@ body,.month-container,.week-view,.daily-view{background:white!important;box-shad
             weeklyTasksSection.className = 'weekly-tasks';
             weeklyTasksSection.innerHTML = `
                 <div class="weekly-tasks-header weekly-tasks-toggle" onclick="this.closest('.weekly-tasks').classList.toggle('collapsed')">📋 משימות שבועיות <span class="collapse-arrow">&#9660;</span></div>
-                <input type="text" class="weekly-task-input" id="weeklyTaskInput" placeholder="הוסף משימה ולחץ Enter">
+                <input type="text" class="weekly-task-input" id="weeklyTaskInput" placeholder="הוסף משימה">
                 <div id="weeklyTasksList"></div>
             `;
             weekView.appendChild(weeklyTasksSection);
